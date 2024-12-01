@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="android:colorPrimary">@color/purple_500</item>
+        <item name="android:colorAccent">@color/white</item>
+    </style>
+</resources>
