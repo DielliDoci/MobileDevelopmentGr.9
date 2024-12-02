@@ -12,21 +12,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantApp"
         tools:targetApi="31">
+
+        <!-- Profile Activity: Accessible only within the app -->
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+
+        <!-- Sign Up Activity: Now exported, can be launched from outside or with an intent -->
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.restaurantapp.SIGN_UP" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Sign In Activity: Exported for possible external launching or via intent -->
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.restaurantapp.SIGN_IN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main Activity: Main entry point of the app -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
