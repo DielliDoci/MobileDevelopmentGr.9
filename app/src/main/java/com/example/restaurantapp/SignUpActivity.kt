@@ -1,50 +1,54 @@
 package com.example.restaurantapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
+
+
 
 
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var etName: EditText
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
 
-        // Lidhja e fushave
-        etName = findViewById(R.id.etName)
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
+        // Get references to views
+        val usernameInput = findViewById<EditText>(R.id.usernameInput)
+        val emailInput = findViewById<EditText>(R.id.emailInput)
+        val passwordInput = findViewById<EditText>(R.id.passwordInput)
+        val signUpButton = findViewById<Button>(R.id.signUpButton)
+        val loginRedirect = findViewById<TextView>(R.id.loginRedirect)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Handle Sign-Up button click
+        signUpButton.setOnClickListener {
+            val username = usernameInput.text.toString()
+            val email = emailInput.text.toString()
+            val password = passwordInput.text.toString()
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show()
+            } else {
+                // Success message
+                Toast.makeText(this, "Sign-Up Successful!", Toast.LENGTH_SHORT).show()
+                // Redirect to ProfileActivity (or Login page)
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
         }
-    }
 
-    // Funksioni që trajton regjistrimin
-    fun onSignUpClick(view: View) {
-        val name = etName.text.toString().trim()
-        val email = etEmail.text.toString().trim()
-        val password = etPassword.text.toString().trim()
-
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Të gjitha fushat janë të detyrueshme!", Toast.LENGTH_SHORT).show()
-        } else {
-            // Mund të shtoni logjikën për regjistrimin, si dërgimi i të dhënave në një server
-            Toast.makeText(this, "Përdoruesi u regjistrua me sukses!", Toast.LENGTH_SHORT).show()
+        // Redirect to Login page
+        loginRedirect.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
     }
 }

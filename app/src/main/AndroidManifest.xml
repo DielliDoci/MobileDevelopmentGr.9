@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
 
+
         <!-- Sign In Activity: Exported for possible external launching or via intent -->
         <activity
             android:name=".SignInActivity"
