@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
+
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
