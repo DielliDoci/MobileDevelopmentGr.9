@@ -7,6 +7,11 @@ android {
     namespace = "com.example.restaurantapp"
     compileSdk = 35
 
+    packagingOptions {
+        resources {
+            excludes += "META-INF/native-image/org.mongodb/bson/native-image.properties"
+        }
+    }
     defaultConfig {
         applicationId = "com.example.restaurantapp"
         minSdk = 24
@@ -27,11 +32,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
@@ -47,9 +53,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // MongoDB Dependencies
-    implementation(libs.mongodb.driver.sync)
-    implementation(libs.mongodb.kotlin.coroutine)
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.2")
+    implementation("org.mongodb:bson:4.10.2")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    implementation("org.mongodb:mongodb-driver-sync:4.10.2")
+    implementation("io.realm:realm-gradle-plugin:10.16.0")
+
+
 
 }
 

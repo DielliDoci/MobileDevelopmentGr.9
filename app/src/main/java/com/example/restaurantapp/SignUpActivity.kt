@@ -6,6 +6,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import org.bson.Document
 
 class SignUpActivity : AppCompatActivity() {
@@ -13,7 +15,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Find views by ID
+        // Initialize views
         val usernameInput = findViewById<EditText>(R.id.usernameInput)
         val emailInput = findViewById<EditText>(R.id.emailInput)
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
@@ -31,24 +33,25 @@ class SignUpActivity : AppCompatActivity() {
                     .append("email", email)
                     .append("password", password)
 
-                try {
-                    // Insert user into MongoDB
-                    MongoDbHelper.insertUser("your_database_name", "your_collection_name", userDocument)
-                    Toast.makeText(this, "Sign-Up Successful!", Toast.LENGTH_SHORT).show()
-                    finish() // Optionally close this activity after success
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Toast.makeText(this, "Sign-Up Failed: ${e.message}", Toast.LENGTH_LONG).show()
+                // Launch coroutine for suspend function
+                lifecycleScope.launch {
+                    try {
+                        MongoDbHelper.insertUser("Mobile_Project", "accounts", userDocument)
+                        Toast.makeText(this@SignUpActivity, "Sign-Up Successful!", Toast.LENGTH_SHORT).show()
+                        finish() // Close the activity on success
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        Toast.makeText(this@SignUpActivity, "Sign-Up Failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
                 }
             } else {
                 Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Handle Redirect to Login
+        // Handle Login Redirect
         loginRedirect.setOnClickListener {
-            // Redirect to Login Activity
-            finish() // Closes this activity; assumes the Login Activity is the previous one
+            finish() // Close this activity
         }
     }
 }
