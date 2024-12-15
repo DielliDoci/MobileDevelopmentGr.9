@@ -27,6 +27,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".ProfileActivity" />
+
 
 
         <!-- Sign In Activity: Exported for possible external launching or via intent -->

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Main Content Area -->
+    <FrameLayout
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navBar" />
+
+    <!-- Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:background="@android:color/white">
+
+        <!-- Home Button -->
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Home"
+            android:textColor="@android:color/black"
+            android:background="@drawable/nav_button_background" />
+
+        <!-- Menu Button -->
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Menu"
+            android:textColor="@android:color/black"
+            android:background="@drawable/nav_button_background" />
+
+        <!-- Order Button -->
+        <Button
+            android:id="@+id/orderButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Order"
+            android:textColor="@android:color/black"
+            android:background="@drawable/nav_button_background" />
+
+        <!-- Profile Button -->
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:textColor="@android:color/black"
+            android:background="@drawable/nav_button_background" />
+    </LinearLayout>
+</RelativeLayout>
