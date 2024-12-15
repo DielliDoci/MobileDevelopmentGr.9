@@ -36,6 +36,7 @@ android {
 }
 
 
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -49,5 +50,6 @@ dependencies {
     // MongoDB Dependencies
     implementation(libs.mongodb.driver.sync)
     implementation(libs.mongodb.kotlin.coroutine)
+
 }
 

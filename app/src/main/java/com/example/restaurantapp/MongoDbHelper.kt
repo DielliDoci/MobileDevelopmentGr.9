@@ -8,6 +8,7 @@ import com.mongodb.ServerApiVersion
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import kotlinx.coroutines.runBlocking
 
+
 object MongoDbHelper {
     private const val CONNECTION_STRING = "mongodb+srv://Blerton:Blerton@cluster0.0caoi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     private val mongoClient: MongoClient
