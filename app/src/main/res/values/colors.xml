@@ -12,6 +12,8 @@
     <color name="indigo">#4B0082</color>
     <color name="amber_700">#FFB300</color>
     <color name="orange_500">#E67E22</color>
+    <color name="colorSelected">#FF5722</color> <!-- Highlighted color -->
+    <color name="colorDefault">#FFFFFF</color> <!-- Default color -->
 
 
 </resources>

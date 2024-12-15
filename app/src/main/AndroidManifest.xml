@@ -13,12 +13,12 @@
         android:theme="@style/Theme.RestaurantApp"
         tools:targetApi="31">
 
-        <!-- Profile Activity: Accessible only within the app -->
+        <!-- Profile Activity -->
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
 
-        <!-- Sign Up Activity: Now exported, can be launched from outside or with an intent -->
+        <!-- Sign Up Activity -->
         <activity
             android:name=".SignUpActivity"
             android:exported="true">
@@ -27,15 +27,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
+
+        <!-- Other Activities -->
         <activity android:name=".HomeActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".OrderActivity" />
-        <activity android:name=".ProfileActivity" />
 
-
-
-        <!-- Sign In Activity: Exported for possible external launching or via intent -->
+        <!-- Sign In Activity -->
         <activity
             android:name=".SignInActivity"
             android:exported="true">
@@ -45,7 +43,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Main Activity: Main entry point of the app -->
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -55,5 +53,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
