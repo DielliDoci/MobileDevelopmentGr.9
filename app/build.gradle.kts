@@ -29,11 +29,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 
@@ -49,5 +49,8 @@ dependencies {
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
     implementation(libs.mysql.connector.java)
-    implementation(libs.jbcrypt)
+    implementation("de.svenkubiak:jBCrypt:0.4.1") // Keep this one
+    implementation ("org.mongodb:mongodb-driver-sync:4.11.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1") // Optional for async operations
 }
+
